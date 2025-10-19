@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% set lang = current_language %}
+<html lang="{{ lang|lower }}" dir="{% if lang == 'FA' %}rtl{% else %}ltr{% endif %}">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume PDF</title>
+  <style>
+    main{
+        max-width: 190mm;
+    }
+    body {
+    width: 210mm;
+    min-height: 800px;
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #333;
+    text-align: {% if lang == "FA" %}right{% else %}left{% endif %};
+    direction: {% if lang == "FA" %}rtl{% else %}ltr{% endif %};
+    font-family: {% if lang == "FA" %}'Vazirmatn'{% else %}'sans-serif'{% endif %};
+
+}
+    p, ul, h1, h2, h3 {
+      direction: {% if lang == "FA" %}rtl{% else %}ltr{% endif %};
+      text-align: {% if lang == "FA" %}right{% else %}left{% endif %};
+    }
+    .profile-photo {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  @font-face {
+  font-family: 'Vazirmatn';
+  src: url('{{ url_for('static', filename='fonts/Vazirmatn-Regular.ttf') }}');
+}
+  @page {
+  size: A4;
+  margin: 10mm;
+}
+  </style>
+</head>
+<body>
+    <main>
+  <img src="file://{{ image_path }}" class="profile-photo" alt="Taha Jahanbani">
+
+  <h1>
+  {% if lang == "FA" %}
+    طاها جهانبانی
+  {% else %}
+    Taha Jahanbani
+  {% endif %}
+  </h1>
+
+  {% if lang == "FA" %}
+    <h3>درباره من</h3>
+    <p>من یک خالق چندرشته‌ای هستم که در تقاطع کدنویسی، طراحی و مهندسی فعالیت می‌کنم. نام کامل من طاها جهانبانی است، متولد ایران و ساکن فعلی تهران. تخصص من توسعه‌ی فول‌استک وب، طراحی رابط کاربری (UI/UX)، مدل‌سازی صنعتی با نرم‌افزارهای CAD، و تولید محتوای چندزبانه است. پیش‌زمینه‌ی من شامل برنامه‌نویسی (Python، C، SQL، JavaScript، PHP)، طراحی سه‌بعدی (SolidWorks، KeyShot)، تدوین ویدیو (Premiere Pro) و سرویس سخت‌افزار می‌شود. در حال حاضر در دوره‌ی CS50xIran شرکت می‌کنم و به ساخت تجربه‌های دیجیتال علاقه‌مندم—تجربه‌هایی که هم از نظر فنی دقیق باشند و هم از نظر احساسی تأثیرگذار.</p>
+
+    <h3>مهارت‌ها</h3>
+    <ul>
+      <li>زبان‌های برنامه‌نویسی: C، Python، SQL، HTML، CSS، JavaScript، PHP</li>
+      <li>فریم‌ورک‌ها و سیستم‌ها: Flask، WordPress، طراحی رابط کاربری (UI/UX)</li>
+      <li>نرم‌افزارها: SolidWorks، KeyShot، Premiere Pro</li>
+    </ul>
+
+    <h3>سوابق کاری</h3>
+    <p><strong>تولیدکننده محتوا و طراح صنعتی در شرکت Condori Propak</strong> (۲۰۲۲ – اکنون)</p>
+    <ul>
+      <li>طراحی قطعات صنعتی، ساخت رندرها، توسعه وب‌سایت‌های چندزبانه</li>
+    </ul>
+
+    <h3>تحصیلات</h3>
+    <p>دوره CS50xIran (مبانی علوم کامپیوتر)</p>
+
+    <h3>زبان‌ها</h3>
+    <p>فارسی، انگلیسی، ترکی استانبولی</p>
+
+    <h3>تماس</h3>
+    <p>تلفن: +98 912 923 2664</p>
+    <p>ایمیل: <a href="mailto:jahanbani.taha.923@gmail.com">jahanbani.taha.923@gmail.com</a></p>
+    <p>گیت‌هاب: <a href="https://github.com/jahanbani-taha">github.com/jahanbani-taha</a></p>
+    <p>لینکدین: <a href="https://www.linkedin.com/in/taha-cihan">linkedin.com/in/taha-cihan</a></p>
+
+  {% elif lang == "TR" %}
+    <h3>Hakkımda</h3>
+    <p>Kodlama, tasarım ve mühendisliğin kesişim noktasında çalışan çok disiplinli bir yaratıcıyım. Tam adım Taha Cihanbani, İran doğumluyum ve şu anda Tahran'da yaşıyorum. Uzmanlık alanlarım: full-stack web geliştirme, UI/UX tasarımı, endüstriyel CAD modelleme ve çok dilli içerik üretimi. Arka planım; programlama (Python, C, SQL, JavaScript, PHP), 3D tasarım (SolidWorks, KeyShot), video düzenleme (Premiere Pro) ve donanım servisini kapsıyor. Şu anda CS50xIran kursuna katılıyorum ve teknik olarak sağlam, duygusal olarak etkileyici dijital deneyimler oluşturma konusunda tutkuluyum.</p>
+
+    <h3>Yetenekler</h3>
+    <ul>
+      <li>Programlama dilleri: C, Python, SQL, HTML, CSS, JavaScript, PHP</li>
+      <li>Framework ve sistemler: Flask, WordPress, UI/UX Tasarımı</li>
+      <li>Yazılımlar: SolidWorks, KeyShot, Premiere Pro</li>
+    </ul>
+
+    <h3>İş Deneyimi</h3>
+    <p><strong>Condori Propak şirketinde İçerik Üreticisi ve Endüstriyel Tasarımcı</strong> (2022 – Günümüz)</p>
+    <ul>
+      <li>Endüstriyel parça tasarımı, render üretimi, çok dilli web siteleri geliştirme</li>
+    </ul>
+
+    <h3>Eğitim</h3>
+    <p>CS50xIran kursu (Bilgisayar Bilimi Temelleri)</p>
+
+    <h3>Diller</h3>
+    <p>Farsça, İngilizce, Türkçe</p>
+
+    <h3>İletişim</h3>
+    <p>Telefon: +98 912 923 2664</p>
+    <p>E-posta: <a href="mailto:jahanbani.taha.923@gmail.com">jahanbani.taha.923@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/jahanbani-taha">github.com/jahanbani-taha</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/taha-cihan">linkedin.com/in/taha-cihan</a></p>
+
+  {% else %}
+    <h3>About Me</h3>
+    <p>I’m a multidisciplinary creator working at the intersection of code, design, and engineering. My full name is Taha Jahanbani, born in Iran and currently based in Tehran. I specialize in full-stack web development, UI/UX design, industrial CAD modeling, and multilingual content production. My background spans programming (Python, C, SQL, JavaScript, PHP), 3D design (SolidWorks, KeyShot), video editing (Premiere Pro), and hardware servicing. I’m currently taking the CS50xIran course and passionate about building digital experiences that are both technically sound and emotionally resonant.</p>
+
+    <h3>Skills</h3>
+    <ul>
+      <li>Programming Languages: C, Python, SQL, HTML, CSS, JavaScript, PHP</li>
+      <li>Frameworks & Systems: Flask, WordPress, UI/UX Design</li>
+      <li>Software: SolidWorks, KeyShot, Premiere Pro</li>
+    </ul>
+
+    <h3>Work Experience</h3>
+    <p><strong>Content Producer & Industrial Designer at Condori Propak Co</strong> (2022 – Present)</p>
+    <ul>
+      <li>Designed industrial parts, created renderings, built multilingual websites</li>
+    </ul>
+
+    <h3>Education</h3>
+    <p>CS50xIran course (Computer Science Fundamentals)</p>
+
+    <h3>Languages</h3>
+    <p>Persian, English, Turkish</p>
+
+    <h3>Contact</h3>
+    <p>Tel: +98 912 923 2664</p>
+    <p>Email: <a href="mailto:jahanbani.taha.923@gmail.com">jahanbani.taha.923@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/jahanbani-taha">github.com/jahanbani-taha</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/taha-cihan">linkedin.com/in/taha-cihan</a></p>
+  {% endif %}
+</main>
+</body>
+</html>

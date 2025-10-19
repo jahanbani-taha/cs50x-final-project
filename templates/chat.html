@@ -1,0 +1,29 @@
+{% set lang = current_language %}
+{% extends "layout.html" %}
+{% block content %}
+<div class="chat-container">
+
+<form method="POST" class="chat-form">
+  <div class="chat-row">
+    <input type="text" name="message" class="chat-input" placeholder="{{ "پیام خود را بنویسید..." if lang == "FA" else "Mesajınızı yazın..." if lang == "TR" else "Type your message..." }}" required>
+    <button type="submit" class="chat-button">
+      {{ "ارسال" if current_language == "FA" else "Send" }}
+    </button>
+</form>
+<form action="{{ url_for('clear_chat', lang=current_language, theme=theme) }}" method="get">
+  <input type="hidden" name="theme" value="{{ theme }}">
+  <input type="hidden" name="lang" value="{{ current_language }}">
+    <button type="submit" class="chat-button">
+    {{ "پاک کردن" if lang == "FA" else "Temizle" if lang == "TR" else "Clear" }}
+    </button>
+</form>
+</div>
+<div class="chat-box">
+    {% for entry in chat_history %}
+    <p><strong>{{ "شما" if lang == "FA" else "Sen" if lang == "TR" else "You" }}:</strong> {{ entry.user }}</p>
+    <p><strong>{{ "چت‌بات" if lang == "FA" else "Bot" if lang == "TR" else "Bot" }}:</strong> {{ entry.bot }}</p>
+    <hr>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% set is_dark = theme == "dark" %}
+<html lang="{{ current_language|lower }}" dir="{% if current_language == 'FA' %}rtl{% else %}ltr{% endif %}" class="{% if is_dark %}dark{% endif %}"><head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    </style>
+</head>
+{% set nav_labels = {
+  "EN": {
+    "portfolios": "Portfolios",
+    "contact": "Contact Me",
+    "chat": "Chatbot",
+    "resume": "Resume",
+    "theme": "Theme",
+    "language": "Language"
+  },
+  "FA": {
+    "portfolios": "نمونه‌کارها",
+    "contact": "تماس با من",
+    "chat": "چت‌بات",
+    "resume": "رزومه",
+    "theme": "تم",
+    "language": "زبان"
+  },
+  "TR": {
+    "portfolios": "Portföyler",
+    "contact": "İletişim",
+    "chat": "Sohbet Botu",
+    "resume": "Özgeçmiş",
+    "theme": "Tema",
+    "language": "Dil"
+  }
+} %}
+{% set lang = current_language %}
+{% set name_labels = {
+  "EN": "Taha Jahanbani",
+  "FA": "طاها جهانبانی",
+  "TR": "Taha Cihanbani"
+} %}
+<body>
+<nav class="navbar navbar-expand-lg custom-navbar mt-3 mx-auto">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-semibold" href="{{ url_for('index', lang=lang, theme=theme) }}" style="font-size: 1.1rem;">
+            {{ name_labels[lang] }}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="collapse navbar-collapse flex-column flex-lg-row align-items-center justify-content-center gap-3 {% if is_dark %}bg-transparent{% else %}bg-white{% endif %} rounded" id="mainNavbar">
+            <ul class="navbar-nav flex-column flex-lg-row justify-content-lg-center align-items-lg-center gap-lg-3 gap-3 mx-auto">
+                <li class="nav-item"><a class="nav-btn" href="{{ url_for('portfolios', lang=lang, theme=theme) }}">{{ nav_labels[lang]["portfolios"] }}</a></li>
+                <li class="nav-item"><a class="nav-btn" href="{{ url_for('contact', lang=lang, theme=theme) }}">{{ nav_labels[lang]["contact"] }}</a></li>
+                <li class="nav-item"><a class="nav-btn" href="{{ url_for('chat', lang=lang, theme=theme) }}">{{ nav_labels[lang]["chat"] }}</a></li>
+                <li class="nav-item"><a class="nav-btn" href="{{ url_for('resume', lang=lang, theme=theme) }}">{{ nav_labels[lang]["resume"] }}</a></li>
+            </ul>
+            <div class="d-flex language-buttons gap-3">
+                {% if theme == "dark" %}
+                <a class="nav-btn me-3" href="{{ request.path }}?lang={{ lang }}&theme=light"> {{ nav_labels[lang]["theme"] }}</a>
+                {% else %}
+                <a class="nav-btn me-3" href="{{ request.path }}?lang={{ lang }}&theme=dark"> {{ nav_labels[lang]["theme"] }}</a>
+                {% endif %}
+                <div class="dropdown">
+                    <button class="nav-btn dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ nav_labels[lang]["language"] }}: {{ lang|upper }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="{{ request.path }}?lang=FA&theme={{ theme }}">FA - فارسی</a></li>
+                        <li><a class="dropdown-item" href="{{ request.path }}?lang=EN&theme={{ theme }}">EN - English</a></li>
+                        <li><a class="dropdown-item" href="{{ request.path }}?lang=TR&theme={{ theme }}">TR - Türkçe</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container mt-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

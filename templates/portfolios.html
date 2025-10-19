@@ -1,0 +1,21 @@
+{% set lang = current_language %}
+{% extends "layout.html" %}
+{% block content %}
+<div class="portfolio-header">
+    <h2>
+      {% if lang == "FA" %} نمونه‌کارها {% elif lang == "TR" %} Portfolyo {% else %} Portfolios {% endif %}
+    </h2>
+</div>
+<div class="portfolio-grid">
+  {% for project in projects %}
+    <div class="portfolio-card">
+      <img src="{{ project.image }}" alt="{{ project.title }}" class="portfolio-image">
+      <h3>{{ project.title[lang] }}</h3>
+      <p>{{ project.description[lang] }}</p>
+      <a href="{{ project.link }}" target="_blank" class="portfolios-button">
+        {% if lang == "FA" %} مشاهده پروژه {% elif lang == "TR" %} Projeyi Görüntüle {% else %} View Project {% endif %}
+      </a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

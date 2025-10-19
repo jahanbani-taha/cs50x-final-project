@@ -1,0 +1,50 @@
+{% set lang = current_language %}
+{% extends "layout.html" %}
+{% block content %}
+<section class="contact-section">
+    <h2>
+    {% if lang == "FA" %} تماس با من {% elif lang == "TR" %} Benimle İletişime Geçin {% else %} Contact Me {% endif %}
+    </h2>
+    <div class="contact-info">
+        <p><strong>
+            {% if lang == "FA" %} شماره تماس: {% elif lang == "TR" %} Telefon: {% else %} Phone Number: {% endif %}
+        </strong> +98 912 923 2664</p>
+
+        <p><strong>
+            {% if lang == "FA" %} ایمیل: {% elif lang == "TR" %} E-posta: {% else %} Email: {% endif %}
+        </strong> jahanbani.taha.923@gmail.com</p>
+
+        <p><strong>
+            {% if lang == "FA" %} گیت‌هاب: {% elif lang == "TR" %} Github: {% else %} Github: {% endif %}
+        </strong> <a href="https://github.com/jahanbani-taha" target="_blank">github.com/jahanbani-taha</a></p>
+
+        <p><strong>
+        {% if lang == "FA" %} لینکدین: {% elif lang == "TR" %} Linkedin: {% else %} Linkedin: {% endif %}
+        </strong> <a href="https://www.linkedin.com/in/taha-cihan" target="_blank">linkedin.com/in/taha-cihan</a></p>
+    </div>
+    <form method="post" action="{{ url_for('contact', lang=current_language) }}" class="contact-form">
+        <input type="hidden" name="theme" value="{{ theme }}">
+        <div class="form-group">
+            <label for="name">
+            {% if lang == "FA" %} نام {% elif lang == "TR" %} İsim {% else %} Name {% endif %}
+            </label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">
+            {% if lang == "FA" %} ایمیل {% elif lang == "TR" %} E-posta {% else %} Email {% endif %}
+            </label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">
+            {% if lang == "FA" %} پیام {% elif lang == "TR" %} Mesaj {% else %} Message {% endif %}
+            </label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+        {% if lang == "FA" %} ارسال پیام {% elif lang == "TR" %} Mesaj Gönder {% else %} Send Message {% endif %}
+        </button>
+    </form>
+</section>
+{% endblock %}

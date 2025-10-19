@@ -1,0 +1,124 @@
+{% set lang = current_language %}
+{% extends "layout.html" %}
+{% block content %}
+<div class="resume-container">
+
+  <h2 class="resume-title">{% if lang == "FA" %} رزومه {% elif lang == "TR" %} Özgeçmiş {% else %} My Resume {% endif %}</h2>
+
+  <div class="resume-actions">
+    <a href="{{ url_for('download_resume_pdf', lang=current_language) }}" class="resume-button">
+        {% if current_language == "FA" %} دانلود PDF {% elif current_language == "TR" %} PDF İndir {% else %} Download PDF {% endif %}
+    </a>
+    <a href="{{ url_for('resume_printable', lang=lang) }}" class="resume-button" target="_blank">
+        {% if lang == "FA" %} چاپ رزومه {% elif lang == "TR" %} Yazdır {% else %} Print Resume {% endif %}
+    </a>
+    </div>
+
+  <div class="resume-content">
+        {% if lang == "FA" %}
+        <h3>درباره من</h3>
+        <p>
+            من یک خالق چندرشته‌ای هستم که در تقاطع کدنویسی، طراحی و مهندسی فعالیت می‌کنم. نام کامل من طاها جهانبانی است، متولد ایران و ساکن فعلی تهران. تخصص من توسعه‌ی فول‌استک وب، طراحی رابط کاربری (UI/UX)، مدل‌سازی صنعتی با نرم‌افزارهای CAD، و تولید محتوای چندزبانه است. پیش‌زمینه‌ی من شامل برنامه‌نویسی (Python، C، SQL، JavaScript، PHP)، طراحی سه‌بعدی (SolidWorks، KeyShot)، تدوین ویدیو (Premiere Pro) و سرویس سخت‌افزار می‌شود. در حال حاضر در دوره‌ی CS50xIran شرکت می‌کنم و به ساخت تجربه‌های دیجیتال علاقه‌مندم—تجربه‌هایی که هم از نظر فنی دقیق باشند و هم از نظر احساسی تأثیرگذار. چه یک وب‌سایت واکنش‌گرا باشد، چه یک نمونه‌ی رندرشده یا داستان برند چندزبانه—من با وضوح، دقت و هدفمندی خلق می‌کنم.
+        </p>
+
+        <h3>مهارت‌ها</h3>
+        <ul>
+            <li>زبان‌های برنامه‌نویسی: C، Python، SQL، HTML، CSS، JavaScript، PHP</li>
+            <li>فریم‌ورک‌ها و سیستم‌ها: Flask، WordPress، طراحی رابط کاربری (UI/UX)</li>
+            <li>نرم‌افزارها: SolidWorks، KeyShot، Premiere Pro</li>
+        </ul>
+
+        <h3>سوابق کاری</h3>
+        <div class="experience-item">
+            <h4>تولیدکننده محتوا و طراح صنعتی (وب، کاتالوگ، CAD)</h4>
+            <p class="time"><em>۲۰۲۲ – اکنون</em></p>
+            <p>
+            در این نقش، مسئول طراحی قطعات صنعتی با استفاده از SolidWorks و KeyShot بودم، رندرهای باکیفیت برای استفاده در کاتالوگ‌ها و صفحات وب تولید کردم، محتوای چندزبانه برای معرفی محصولات نوشتم، و طراحی کامل وب‌سایت شرکت را انجام دادم. این تجربه به من کمک کرد تا مهارت‌های فنی، تخصص طراحی و روایت برند را در محیط صنعتی ترکیب کنم.
+            </p>
+        </div>
+        {% elif lang == "TR" %}
+        <h3>Hakkımda</h3>
+        <p>
+            Kodlama, tasarım ve mühendisliğin kesişim noktasında çalışan çok disiplinli bir yaratıcıyım. Tam adım Taha Cihanbani, İran doğumluyum ve şu anda Tahran'da yaşıyorum. Uzmanlık alanlarım: full-stack web geliştirme, UI/UX tasarımı, endüstriyel CAD modelleme ve çok dilli içerik üretimi. Arka planım; programlama (Python, C, SQL, JavaScript, PHP), 3D tasarım (SolidWorks, KeyShot), video düzenleme (Premiere Pro) ve donanım servisini kapsıyor. Şu anda CS50xIran kursuna katılıyorum ve teknik olarak sağlam, duygusal olarak etkileyici dijital deneyimler oluşturma konusunda tutkuluyum. İster duyarlı bir web sitesi, ister render edilmiş bir prototip, ister çok dilli bir marka hikayesi olsun—netlik, hassasiyet ve amaçla üretiyorum.
+        </p>
+
+        <h3>Yetenekler</h3>
+        <ul>
+            <li>Programlama dilleri: C, Python, SQL, HTML, CSS, JavaScript, PHP</li>
+            <li>Framework ve sistemler: Flask, WordPress, UI/UX Tasarımı</li>
+            <li>Yazılımlar: SolidWorks, KeyShot, Premiere Pro</li>
+        </ul>
+
+        <h3>İş Deneyimi</h3>
+        <div class="experience-item">
+            <h4>İçerik Üreticisi ve Endüstriyel Tasarımcı (Web, CAD, Katalog)</h4>
+            <p class="time"><em>2022 – Günümüz</em></p>
+            <p>
+            Bu rolde SolidWorks ve KeyShot kullanarak endüstriyel parçalar tasarladım, katalog ve web sayfalarında kullanılmak üzere yüksek kaliteli renderlar ürettim, ürünleri tanıtmak için çok dilli içerikler oluşturdum ve şirketin web sitesinin tam tasarımını gerçekleştirdim. Bu deneyim, teknik becerilerimi, tasarım uzmanlığımı ve marka anlatımını endüstriyel bir ortamda birleştirmemi sağladı.
+            </p>
+        </div>
+
+        {% else %}
+        <h3>About Me</h3>
+        <p>
+            I’m a multidisciplinary creator working at the intersection of code, design, and engineering. My full name is Taha Jahanbani, born in Iran and currently based in Tehran. I specialize in full-stack web development, UI/UX design, industrial CAD modeling, and multilingual content production. My background spans programming (Python, C, SQL, JavaScript, PHP), 3D design (SolidWorks, KeyShot), video editing (Premiere Pro), and hardware servicing. I’m currently taking the CS50xIran course and passionate about building digital experiences that are both technically sound and emotionally resonant. Whether it’s a responsive website, a rendered prototype, or a multilingual brand story—I craft with clarity, precision, and purpose.
+        </p>
+
+        <h3>Skills</h3>
+        <ul>
+            <li>Programming Languages: C, Python, SQL, HTML, CSS, JavaScript, PHP</li>
+            <li>Frameworks & Systems: Flask, WordPress, UI/UX Design</li>
+            <li>Software: SolidWorks, KeyShot, Premiere Pro</li>
+        </ul>
+
+        <h3>Work Experience</h3>
+        <div class="experience-item">
+        <h4>Content Producer & Industrial Designer (Web, CAD, Catalog)</h4>
+            <p class="time"><em>2022 – Present</em></p>
+            <p>
+            In this role, I was responsible for designing industrial parts using SolidWorks and KeyShot, generating high-quality renderings for use in catalogs and web pages, producing multilingual content to showcase products, and fully designing the company’s website. This experience allowed me to integrate technical skills, design expertise, and brand storytelling within an industrial environment.
+            </p>
+        </div>
+        {% endif %}
+        {% if lang == "FA" %}
+         <h3>تحصیلات</h3>
+        <p>دوره CS50xIran (مبانی علوم کامپیوتر)</p>
+
+        <h3>زبان‌ها</h3>
+         <p>فارسی، انگلیسی، ترکی استانبولی</p>
+
+        <h3>تماس</h3>
+        <p>
+            اگر مایل به ارتباط هستید، لطفاً
+            <a href="{{ url_for('contact', lang=lang) }}" class="contact-link">به صفحه تماس با من مراجعه کنید</a>.
+        </p>
+
+        {% elif lang == "TR" %}
+        <h3>Eğitim</h3>
+        <p>CS50xIran kursu (Bilgisayar Bilimi Temelleri)</p>
+
+        <h3>Diller</h3>
+        <p>Farsça, İngilizce, Türkçe</p>
+
+        <h3>İletişim</h3>
+        <p>
+        Benimle iletişime geçmek isterseniz,
+            <a href="{{ url_for('contact', lang=lang) }}" class="contact-link">İletişim sayfasını ziyaret edin</a>.
+        </p>
+
+        {% else %}
+        <h3>Education</h3>
+        <p>CS50xIran course (Computer Science Fundamentals)</p>
+
+        <h3>Languages</h3>
+        <p>Persian, English, Turkish</p>
+
+        <h3>Contact</h3>
+        <p>
+            If you'd like to get in touch, please
+            <a href="{{ url_for('contact', lang=lang, theme=theme) }}" class="contact-link">visit the Contact Me page</a>.
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+{% set lang = current_language %}
+{% set is_dark = theme == "dark" %}
+<section class="intro-section {% if is_dark %}dark-section{% endif %}">
+    <div class="profile-img-container">
+        <img src="{{ url_for('static', filename='images/profile.jpeg')}}" alt="Taha Jahanbani" class="img-fluid">
+    </div>
+    <div class="intro-text">
+        <h1>{% if lang == "FA" %} طاها جهانبانی {% elif lang == "TR" %} Taha Cihanbani {% else %} Taha Jahanbani {% endif %}</h1>
+
+        <p class="tagline">
+        {% if lang == "FA" %}طراح رابط کاربری | توسعه‌دهنده فول‌استک | تولیدکننده محتوای چندزبانه{% elif lang == "TR" %}UI/UX Tasarımcısı | Full-Stack Geliştirici | Çok Dilli İçerik Üreticisi{% else %}CAD & Content Creator | UI/UX Designer | Full-Stack Developer{% endif %}</p>
+        <p class="bio">
+        {% if lang == "FA" %}ترکیب خلاقیت، دقت و طراحی چندزبانه در کد، طراحی صنعتی و تولید محتوا{% elif lang == "TR" %}Kod, CAD ve içerikte yaratıcılık, hassasiyet ve çok dilli tasarımın birleşimi{% else %}Combining creativity, precision, and multilingual design across code, CAD, and content{% endif %}</p>
+    </div>
+</section>
+<section class="skills-timeline-wrapper {% if is_dark %}dark-section{% endif %}">
+    <div class="skills-section">
+        <h5>{% if lang == "FA" %} مهارت‌ها {% elif lang == "TR" %} Yetenekler {% else %} Skills {% endif %}</h5>
+        <ul class="skills-list">
+            {% if lang == "FA" %}
+                <li>سی، پایتون، اس‌کیوال، اچ‌تی‌ام‌ال، سی‌اس‌اس، جاوااسکریپت، پی‌اچ‌پی</li>
+                <li>طراحی صنعتی با SolidWorks و KeyShot</li>
+                <li>توسعه وب با Flask و WordPress</li>
+                <li>ویرایش ویدیو با Premiere Pro</li>
+                <li>سرویس سخت‌افزار و طراحی رابط کاربری مینیمال</li>
+            {% elif lang == "TR" %}
+                <li>C, Python, SQL, HTML, CSS, JavaScript, PHP</li>
+                <li>SolidWorks ve KeyShot ile endüstriyel tasarım</li>
+                <li>Flask ve WordPress ile web geliştirme</li>
+                <li>Premiere Pro ile video düzenleme</li>
+                <li>Donanım servisi ve minimalist UI tasarımı</li>
+            {% else %}
+                <li>C, Python, SQL, HTML, CSS, JavaScript, PHP</li>
+                <li>Industrial design with SolidWorks and KeyShot</li>
+                <li>Web development with Flask and WordPress</li>
+                <li>Video editing with Premiere Pro</li>
+                <li>Hardware servicing and minimalist UI design</li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="timeline-section">
+        <h5>{% if lang == "FA" %} مسیر یادگیری {% elif lang == "TR" %} Öğrenme Zaman Çizelgesi {% else %} Skill Timeline {% endif %}</h5>
+        <ul class="timeline">
+            {% if lang == "FA" %}
+                <li><strong>۲۰۲۲:</strong> آشنایی با سخت‌افزار و تولید ویدیو</li>
+                <li><strong>۲۰۲۳:</strong> یادگیری HTML، CSS و JavaScript</li>
+                <li><strong>۲۰۲۵:</strong> شروع برنامه‌نویسی با C و Python</li>
+                <li><strong>۲۰۲۵:</strong> ساخت اپلیکیشن‌های وب با Flask و SQL</li>
+                <li><strong>۲۰۲۵:</strong> دوره CS50 و ساخت رزومه‌ی چندزبانه</li>
+            {% elif lang == "TR" %}
+                <li><strong>2022:</strong> Donanım ve video üretimiyle tanışma</li>
+                <li><strong>2023:</strong> HTML, CSS ve JavaScript öğrenildi</li>
+                <li><strong>2025:</strong> C ve Python ile başlandı</li>
+                <li><strong>2025:</strong> Flask ve SQL ile web uygulamaları geliştirildi</li>
+                <li><strong>2025:</strong> CS50 kursu ve çok dilli özgeçmiş sitesi</li>
+            {% else %}
+                <li><strong>2022:</strong> Explored hardware and video production</li>
+                <li><strong>2023:</strong> Learned HTML, CSS, and JavaScript</li>
+                <li><strong>2025:</strong> Started with C and Python</li>
+                <li><strong>2025:</strong> Built web apps with Flask and SQL</li>
+                <li><strong>2025:</strong> CS50 and multilingual resume site</li>
+            {% endif %}
+        </ul>
+    </div>
+</section>
+{% endblock %}
