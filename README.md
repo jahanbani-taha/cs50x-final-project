@@ -40,13 +40,13 @@ venv/ Python virtual environment (excluded from deployment)
 requirements.txt Python dependencies required to run the project
 README.md Project documentation (this file)
 
-## How to Run:
-```bash
-pip install -r requirements.txt
-flask run
-
 ## Contact me:
 You can reach me via the contact form on the website or by email: jahanbani.taha.923@gmail.com
 
 ## Screenshots:
 ![screenshots](screenshots/)
+
+## How to Run:
+```bash
+pip install -r requirements.txt
+flask run
