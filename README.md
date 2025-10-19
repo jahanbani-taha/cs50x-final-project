@@ -47,3 +47,6 @@ flask run
 
 ## Contact me:
 You can reach me via the contact form on the website or by email: jahanbani.taha.923@gmail.com
+
+## Screenshots:
+![screenshots](screenshots/)
